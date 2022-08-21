@@ -12,10 +12,10 @@
     height: 1px;
 }
 .vkr-url-wrapper .avatar {
-    width: 100px;
-    height: 100px;
+    width: 150px !important;
+    height: 150px !important;
     border: solid 1px #eee;
-    box-shadow: none!important;
+    box-shadow: none !important;
     margin: 0;
     margin-right: 10px;
 }
