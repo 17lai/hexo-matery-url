@@ -15,7 +15,7 @@ jobs:
       uses: EndBug/version-check@v2
       id: check
       with:
-        file-name: package.json
+        file-name: https://raw.githubusercontent.com/17lai/hexo-matery-url/refs/heads/master/package.json
         diff-search: true
         static-checking: localIsNew
     - name: Read .nvmrc
