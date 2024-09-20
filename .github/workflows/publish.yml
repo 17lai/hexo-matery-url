@@ -12,11 +12,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Check version changes
-      uses: EndBug/version-check@v2.1.4
+      uses: EndBug/version-check@v2
       id: check
       with:
         file-name: package.json
         diff-search: true
+        static-checking: localIsNew
     - name: Read .nvmrc
       id: node_version
       if: steps.check.outputs.changed == 'true'
