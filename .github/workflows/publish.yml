@@ -16,6 +16,7 @@ jobs:
       id: check
       with:
         file-name: package.json
+        file-url: https://unpkg.com/hexo-matery-url@2.0.1/package.json
         diff-search: true
     - name: Read .nvmrc
       id: node_version
