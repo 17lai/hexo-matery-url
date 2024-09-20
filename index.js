@@ -1,9 +1,8 @@
-const nunjucks = require('nunjucks')
 const path = require('path')
 const fs = require('hexo-fs')
-const url_for = require('hexo-util').url_for.bind(hexo)
 const { promisify } = require('util')
-const TEMPLATE_PATH = path.resolve(__dirname, 'valkyr.njk')
+const url_for = require('hexo-util').url_for.bind(hexo)
+
 const STYLE_PATH = path.resolve(__dirname, './style.css')
 const REG_NAMED_ARG = new RegExp(/\[([^=]+)=(.+)\]/)
 
@@ -18,12 +17,22 @@ hexo.extend.tag.register(`valkyrurl`, function(args, content){
         title: opts.title || opts.url,
         url: opts.url,
         desc: opts.desc,
-        // TODO: Support default image or failed image placeholder
         avatar: opts.avatar
     }
-    const render = promisify(nunjucks.renderString)
-    const tpl = fs.readFileSync(TEMPLATE_PATH)
-    return render(tpl, data)
+    
+    // 使用字符串拼接生成 HTML
+    const html = `
+    <div class="vkr-url-wrapper">
+        ${data.avatar ? `<a href="${data.url}"><img class="avatar" src="${data.avatar}"></a>` : ''}
+        <div class="desc-wrapper">
+            <a href="${data.url}">${data.title}</a>
+            <hr />
+            <div class="desc">${data.desc}</div>
+        </div>
+    </div>
+    `
+
+    return html
 }, {
-    async: true
+    async: false // 由于不再使用异步渲染，设置为 false
 })
