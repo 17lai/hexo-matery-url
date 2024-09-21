@@ -17,6 +17,7 @@ hexo.extend.tag.register(`valkyrurl`, function(args, content){
         title: opts.title || opts.url,
         url: opts.url,
         desc: opts.desc,
+        // TODO: Support default image or failed image placeholder
         avatar: opts.avatar
     }
     
